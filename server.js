@@ -3,6 +3,7 @@ const fs = require("fs");
 const { Pool } = require("pg");
 const db = new Pool(); // Auto connects using .env
 const express = require("express");
+const bodyParser = require("body-parser");
 const api = require("./api");
 const server = express();
 
@@ -18,6 +19,15 @@ if (!fs.existsSync("dist")) {
 
 // Serve directly from the dist folder
 server.use(express.static("dist"));
+
+// Convert POST body into params
+server.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+server.post("/factchecker", (req, res) => {
+    res.send(req.params);
+});
 
 server.get("/:table(posts|responses|threads|users)/:id", (req, res) => {
     // Why concatenate? SQLi? https://github.com/brianc/node-postgres/issues/1426#issuecomment-324618787

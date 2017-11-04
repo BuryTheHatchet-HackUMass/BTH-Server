@@ -18,6 +18,7 @@ if (!fs.existsSync("dist")) {
 // Serve directly from the dist folder
 server.use(express.static("dist"));
 
+<<<<<<< HEAD
 server.get("/:table(posts|responses|thread|users)/:id", (req, res) => {
     // Why concatenate? SQLi? https://github.com/brianc/node-postgres/issues/1426#issuecomment-324618787
     db.query("SELECT * FROM " + req.params.table + " WHERE id = $1", [req.params.id]).then((dbRes) => {
@@ -32,3 +33,6 @@ server.get("/:table(posts|responses|thread|users)/:id", (req, res) => {
 server.listen(8080, () => {
     console.log("Online!")
 });
+=======
+server.listen(process.env["PORT"] || 8080, () => console.log("Online!"));
+>>>>>>> origin/master

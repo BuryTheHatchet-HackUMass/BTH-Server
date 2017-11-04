@@ -11,4 +11,4 @@ if (!fs.existsSync("dist")) {
 // Serve directly from the dist folder
 server.use(express.static("dist"));
 
-server.listen(8080, () => console.log("Online!"));
+server.listen(process.env["PORT"] || 8080, () => console.log("Online!"));

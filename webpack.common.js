@@ -68,7 +68,7 @@ module.exports = {
 				use: extractConfig
 			},
 			{
-				test: /\.(eot|ttf|woff|woff2)$/,
+				test: /\.(eot|ttf|woff|woff2|svg)$/,
 				use: [
 					{
 						loader: "file-loader",

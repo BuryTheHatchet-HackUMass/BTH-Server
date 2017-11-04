@@ -26,11 +26,22 @@ server.use(bodyParser.urlencoded({
 }));
 
 server.post("/factchecker", (req, res) => {
-    res.send(req.params);
+    let keywords = req.body.content
+        .toLowerCase() // Convert everything to lowercase since the SQL statement is case sensitive
+        .split(" ")
+        .map((keyword) => keyword.replace(/[^a-z0-9+]+/gi, "")) // Remove non alphanumeric characters
+        .filter((keyword) => keyword.length > 0) // Remove empty strings        
+        .map((keyword) => `"${keyword}"`);
+    let queryString = `SELECT * FROM facts WHERE keywords && '{${keywords}}'::text[];`; // Is this SQLi prone? I don't know!
+    db.query(queryString).then((dbRes) => {
+        res.send(dbRes.rows);
+    })
+    .catch((err) => {
+        res.status(500).send(err);
+    });
 });
 
-server.get("/:table(posts|responses|threads|users)/:id", (req, res) => {
-    // Why concatenate? SQLi? https://github.com/brianc/node-postgres/issues/1426#issuecomment-324618787
+let regurgitator = (req, res) => {
     db.query("SELECT * FROM " + req.params.table + " WHERE id = $1", [req.params.id]).then((dbRes) => {
         res.send(dbRes.rows[0]);
     })
@@ -38,6 +49,17 @@ server.get("/:table(posts|responses|threads|users)/:id", (req, res) => {
         console.error(err.stack);
         res.status(500).send(err);
     });
+}
+
+server.get("/:table(posts|responses|threads|users)/:id", (req, res) => {
+    // Why concatenate? SQLi? https://github.com/brianc/node-postgres/issues/1426#issuecomment-324618787
+    db.query("SELECT * FROM " + req.params.table + " WHERE id = $1", [req.params.id]).then((dbRes) => {
+        res.send(dbRes.rows[0]);
+    })
+        .catch((err) => {
+            console.error(err.stack);
+            res.status(500).send(err);
+        });
 });
 
 server.get("/:table(posts|responses|threads|users)", (req, res) => {
@@ -45,10 +67,10 @@ server.get("/:table(posts|responses|threads|users)", (req, res) => {
     db.query("SELECT * FROM " + req.params.table).then((dbRes) => {
         res.send(dbRes.rows);
     })
-    .catch((err) => {
-        console.error(err.stack);
-        res.status(500).send(err);
-    });
+        .catch((err) => {
+            console.error(err.stack);
+            res.status(500).send(err);
+        });
 });
 
 server.listen(8080, () => {

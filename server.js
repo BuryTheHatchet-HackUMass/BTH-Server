@@ -41,9 +41,12 @@ server.post("/factchecker", (req, res) => {
     });
 });
 
+// Return all rows or only one if an ID is present
 let regurgitator = (req, res) => {
-    db.query("SELECT * FROM " + req.params.table + " WHERE id = $1", [req.params.id]).then((dbRes) => {
-        res.send(dbRes.rows[0]);
+    let idPresent = req.params.id != undefined;
+    // Why concatenate? SQLi? https://github.com/brianc/node-postgres/issues/1426#issuecomment-324618787
+    db.query("SELECT * FROM " + req.params.table + (idPresent ? " WHERE id = $1" : ""), idPresent ? [req.params.id] : null).then((dbRes) => {
+        res.send(idPresent ? dbRes.rows[0] : dbRes.rows);
     })
     .catch((err) => {
         console.error(err.stack);
@@ -51,27 +54,9 @@ let regurgitator = (req, res) => {
     });
 }
 
-server.get("/:table(posts|responses|threads|users)/:id", (req, res) => {
-    // Why concatenate? SQLi? https://github.com/brianc/node-postgres/issues/1426#issuecomment-324618787
-    db.query("SELECT * FROM " + req.params.table + " WHERE id = $1", [req.params.id]).then((dbRes) => {
-        res.send(dbRes.rows[0]);
-    })
-        .catch((err) => {
-            console.error(err.stack);
-            res.status(500).send(err);
-        });
-});
+server.get("/:table(posts|responses|threads|users)/:id", regurgitator);
+server.get("/:table(posts|responses|threads|users)", regurgitator);
 
-server.get("/:table(posts|responses|threads|users)", (req, res) => {
-    // Why concatenate? SQLi? https://github.com/brianc/node-postgres/issues/1426#issuecomment-324618787
-    db.query("SELECT * FROM " + req.params.table).then((dbRes) => {
-        res.send(dbRes.rows);
-    })
-        .catch((err) => {
-            console.error(err.stack);
-            res.status(500).send(err);
-        });
-});
 
 server.listen(8080, () => {
     console.log("Online!")

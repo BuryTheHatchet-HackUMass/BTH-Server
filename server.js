@@ -1,6 +1,7 @@
 const { spawn } = require("child_process");
 const fs = require("fs");
 const express = require("express");
+const api = require("./api");
 const server = express();
 
 // Make sure dist exists
@@ -10,5 +11,7 @@ if (!fs.existsSync("dist")) {
 }
 // Serve directly from the dist folder
 server.use(express.static("dist"));
+
+server.use("/api", api);
 
 server.listen(process.env["PORT"] || 8080, () => console.log("Online!"));

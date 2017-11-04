@@ -1,11 +1,11 @@
 <template>
-<div class="box alt">
+<div id="home" class="box alt">
     <div class="row 50% uniform">
         <div class="6u topic-panel shadow">
             <div class="image fit">
                 <img src="https://media-cdn.tripadvisor.com/media/photo-s/0d/90/b2/35/las-vegas-strip.jpg" alt="" />
             </div>
-            <h2>Should gun control laws be changed in the light of Las Vegas shootings?</h2>
+            <h2>{{headline}}</h2>
             <p><span class="large-num">3</span> days left</p>
             <div>
                 
@@ -14,6 +14,21 @@
     </div>
 </div>
 </template>
+
+<script>
+    Vue.component('home', {
+      template: '#home',
+      data: function () {
+        return {
+          dragging: false,
+          // quadratic bezier control point
+          c: { x: 160, y: 160 },
+          // record drag start point
+          start: { x: 0, y: 0 }
+        }
+      }
+    });
+</script>
 
 <!-- Helvetica, italicized -->
 

@@ -12,12 +12,12 @@
             </button>
         </div>
         <div id="menu" class="navbar-menu">
-            <a class="navbar-item is-active">Home</a>
-            <a class="navbar-item">New</a>
-            <a class="navbar-item">Popular</a>
-            <a class="navbar-item">For You</a>
-            <a class="navbar-item">Recently Buried</a>
-            <a class="navbar-item">Starred</a>
+            <router-link to="/" class="navbar-item" :class="{'is-active': $route.hash == ''}">Home</router-link>
+            <router-link to="#new" class="navbar-item" :class="{'is-active': $route.hash == '#new'}">New</router-link>
+            <router-link to="#popular" class="navbar-item" :class="{'is-active': $route.hash == '#popular'}">Popular</router-link>
+            <router-link to="#for-you" class="navbar-item" :class="{'is-active': $route.hash == '#for-you'}">For You</router-link>
+            <router-link to="#recently-buried" class="navbar-item" :class="{'is-active': $route.hash == '#recently-buried'}">Recently Buried</router-link>
+            <router-link to="#starred" class="navbar-item" :class="{'is-active': $route.hash == '#starred'}">Starred</router-link>
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="field">

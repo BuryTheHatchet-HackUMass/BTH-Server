@@ -21,10 +21,13 @@
 
   @import "~bulma/bulma";
 
-  // .navbar-burger {
-  //   border: 0;
-  //   height: 80px;
-  // }
+  .navbar-burger {
+    border: 0;
+    height: 80px;
+  }
+
+  .navbar { position: fixed !important; top: 0; left: 0; right: 0; }
+
 
   html {
     background: #f5f5f5;

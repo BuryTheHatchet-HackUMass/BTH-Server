@@ -15,7 +15,7 @@ if (!fs.existsSync("dist")) {
     process.exit(1); // Force quit
 }
 
-// Serve directly from the dist folder
+// Server directly from the dist folder
 server.use(express.static("dist"));
 
 <<<<<<< HEAD

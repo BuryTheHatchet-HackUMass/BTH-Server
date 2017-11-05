@@ -5,10 +5,10 @@
             <div class="hero-body">
                 <div class="container">
                 <h1 class="title">
-                    Hero title
+                    {{ hero.title }}
                 </h1>
                 <h2 class="subtitle">
-                    Hero subtitle
+                    {{ hero.subtitle }}
                 </h2>
                 </div>
             </div>
@@ -21,29 +21,28 @@
             </div>
         </nav>
         <nav id="stats" class="level">
-            <level-item heading="Hatchets" title="6" />
-            <level-item heading="Responses" title="123" />
-            <level-item heading="Facts Added" title="12" />
-            <level-item heading="New Users" title="789" />
+            <level-item v-for="(title, heading) in stats" :key="heading" :heading="heading" :title="title" />
         </nav>
+        <!-- Gonna need an umbrella for this, we didn't stay DRY -->
         <section class="category" id="new">
             <h1 class="title">New</h1>
             <div class="columns is-multiline">
                 <div class="column is-one-quarter"  
-                    v-for="x in 10"
-                    :key="x">
+                    v-for="hatchet in hatchets.new"
+                    :key="hatchet.title"
+                >
                     <card
-                        background-src="https://www.rd.com/wp-content/uploads/sites/2/2016/03/national-cereal-day-opener.jpg"
-                        title="Cereal or Milk first?" 
-                        expiration="8" 
-                        :tags="['politics', 'cereal']" 
-                        :left="{'name': 'Milk', 'responses': 12}" 
-                        :right="{'name': 'Cereal', 'responses': 56}" 
-                        :starred="false"
-                        @leftClicked="selectHatchet(x)"
-                        @rightClicked="selectHatchet(x)"
-                        @clicked="selectHatchet(x)"
-                        ></card>
+                        :background-src="hatchet.bg"
+                        :title="hatchet.title" 
+                        :expiration="hatchet.expires" 
+                        :tags="hatchet.tags" 
+                        :left="hatchet.left" 
+                        :right="hatchet.right" 
+                        :starred="hatchet.starred"
+                        @leftClicked="selectHatchet(hatchet.id)"
+                        @rightClicked="selectHatchet(hatchet.id)"
+                        @clicked="selectHatchet(hatchet.id)"
+                    />
                 </div>
             </div>
         </section>
@@ -51,24 +50,89 @@
             <h1 class="title">Popular</h1>
             <div class="columns is-multiline">
                 <div class="column is-one-quarter"  
-                    v-for="x in 3"
-                    :key="x">
+                    v-for="hatchet in hatchets.popular"
+                    :key="hatchet.title"
+                >
                     <card
-                        background-src="https://www.rd.com/wp-content/uploads/sites/2/2016/03/national-cereal-day-opener.jpg"
-                        title="Cereal or Milk first?" 
-                        expiration="8" 
-                        :tags="['politics', 'cereal']" 
-                        :left="{'name': 'Milk', 'responses': 12}" 
-                        :right="{'name': 'Cereal', 'responses': 56}" 
-                        :starred="false" />
+                        :background-src="hatchet.bg"
+                        :title="hatchet.title" 
+                        :expiration="hatchet.expires" 
+                        :tags="hatchet.tags" 
+                        :left="hatchet.left" 
+                        :right="hatchet.right" 
+                        :starred="hatchet.starred"
+                        @leftClicked="selectHatchet(hatchet.id)"
+                        @rightClicked="selectHatchet(hatchet.id)"
+                        @clicked="selectHatchet(hatchet.id)"
+                    />
                 </div>
             </div>
         </section>
-        <section class="category" id="for-you">
+       <section class="category" id="for-you">
             <h1 class="title">For You</h1>
+            <div class="columns is-multiline">
+                <div class="column is-one-quarter"  
+                    v-for="hatchet in hatchets.forYou"
+                    :key="hatchet.title"
+                >
+                    <card
+                        :background-src="hatchet.bg"
+                        :title="hatchet.title" 
+                        :expiration="hatchet.expires" 
+                        :tags="hatchet.tags" 
+                        :left="hatchet.left" 
+                        :right="hatchet.right" 
+                        :starred="hatchet.starred"
+                        @leftClicked="selectHatchet(hatchet.id)"
+                        @rightClicked="selectHatchet(hatchet.id)"
+                        @clicked="selectHatchet(hatchet.id)"
+                    />
+                </div>
+            </div>
         </section>
         <section class="category" id="recently-buried">
             <h1 class="title">Recently Buried</h1>
+            <div class="columns is-multiline">
+                <div class="column is-one-quarter"  
+                    v-for="hatchet in hatchets.new"
+                    :key="hatchet.title"
+                >
+                    <card
+                        :background-src="hatchet.bg"
+                        :title="hatchet.title" 
+                        :expiration="hatchet.expires" 
+                        :tags="hatchet.tags" 
+                        :left="hatchet.left" 
+                        :right="hatchet.right" 
+                        :starred="hatchet.starred"
+                        @leftClicked="selectHatchet(hatchet.id)"
+                        @rightClicked="selectHatchet(hatchet.id)"
+                        @clicked="selectHatchet(hatchet.id)"
+                    />
+                </div>
+            </div>
+        </section>
+        <section class="category" id="starred">
+            <h1 class="title">Starred</h1>
+            <div class="columns is-multiline">
+                <div class="column is-one-quarter"  
+                    v-for="hatchet in hatchets.starred"
+                    :key="hatchet.title"
+                >
+                    <card
+                        :background-src="hatchet.bg"
+                        :title="hatchet.title" 
+                        :expiration="hatchet.expires" 
+                        :tags="hatchet.tags" 
+                        :left="hatchet.left" 
+                        :right="hatchet.right" 
+                        :starred="hatchet.starred"
+                        @leftClicked="selectHatchet(hatchet.id)"
+                        @rightClicked="selectHatchet(hatchet.id)"
+                        @clicked="selectHatchet(hatchet.id)"
+                    />
+                </div>
+            </div>
         </section>
     </div>
 </template>
@@ -78,6 +142,84 @@ import Card from '../components/Card.vue';
 import Navbar from '../components/Navbar.vue';
 
 export default {
+    data: () => {
+        return {
+            hero: {
+                title: "Cereal or breakfast?",
+                subtitle: "TBD"
+            },
+            stats: {
+                "Hatchets": 6, 
+                "Responses": 12,
+                "Facts Added": 30,
+                "New Users": 3
+            },
+            hatchets: {
+                new: [
+                    {
+                        id: 0,
+                        bg: "https://www.rd.com/wp-content/uploads/sites/2/2016/03/national-cereal-day-opener.jpg",
+                        title: "Cereal or Milk first?",
+                        expires: 8,
+                        tags: ["cereal", "milk"],
+                        left: {
+                            name: "Cereal",
+                            responses: 2
+                        },
+                        right: {
+                            name: "Milk",
+                            responses: 4
+                        },
+                        starred: false
+                    }
+                ],
+                popular: [
+
+                ],
+                forYou: [
+                    {
+                        id: 0,
+                        bg: "https://www.rd.com/wp-content/uploads/sites/2/2016/03/national-cereal-day-opener.jpg",
+                        title: "Cereal or Milk first?",
+                        expires: 8,
+                        tags: ["cereal", "milk"],
+                        left: {
+                            name: "Cereal",
+                            responses: 2
+                        },
+                        right: {
+                            name: "Milk",
+                            responses: 4
+                        },
+                        starred: false
+                    }
+
+                ],
+                recentlyBuried: [
+
+                ],
+                starred: [
+                    {
+                        id: 0,
+                        bg: "https://www.rd.com/wp-content/uploads/sites/2/2016/03/national-cereal-day-opener.jpg",
+                        title: "Cereal or Milk first?",
+                        expires: 8,
+                        tags: ["cereal", "milk"],
+                        left: {
+                            name: "Cereal",
+                            responses: 2
+                        },
+                        right: {
+                            name: "Milk",
+                            responses: 4
+                        },
+                        starred: false
+                    }
+
+                ]
+            }
+        };
+    },
     methods: {
         log: function(text) {
             console.log(text);

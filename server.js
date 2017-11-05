@@ -26,19 +26,44 @@ server.use(bodyParser.urlencoded({
 }));
 
 server.post("/factchecker", (req, res) => {
-    let keywords = req.body.content
+    /* let keywords = req.body.content
         .toLowerCase() // Convert everything to lowercase since the SQL statement is case sensitive
         .split(" ")
         .map((keyword) => keyword.replace(/[^a-z0-9+]+/gi, "")) // Remove non alphanumeric characters
         .filter((keyword) => keyword.length > 0) // Remove empty strings        
-        .map((keyword) => `"${keyword}"`);
-    let queryString = `SELECT * FROM facts WHERE keywords && '{${keywords}}'::text[];`; // Is this SQLi prone? I don't know!
-    db.query(queryString).then((dbRes) => {
-        res.send(dbRes.rows);
-    })
-    .catch((err) => {
-        res.status(500).send(err);
-    });
+        .map((keyword) => `"${keyword}"`); */
+    
+    
+    // This is about too look ugly; ignore that for now
+    var http = require('http');
+    var options = {
+      host: 'api.cortical.io',
+      path: '/rest/text/keywords?retina_name=en_synonymous',
+      port: '80',
+      method: 'POST'
+    };
+
+    callback = function(response) {
+      var str = ''
+      response.on('data', function (chunk) {
+        str += chunk;
+      });
+      response.on('end', function () {
+        let keywords = JSON.parse(str).map((keyword) => `"${keyword}"`);
+        let queryString = `SELECT * FROM facts WHERE keywords && '{${keywords}}'::text[];`; // Is this SQLi prone? I don't know!
+        db.query(queryString).then((dbRes) => {
+            res.send(dbRes.rows);
+        })
+        .catch((err) => {
+            res.status(500).send(err);
+        });
+      });
+    }
+
+    var request = http.request(options, callback);
+    request.write(req.body.content);
+    request.end();
+    
 });
 
 // Return all rows or only one if an ID is present

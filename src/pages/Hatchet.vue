@@ -73,50 +73,50 @@ export default {
             totalRightLikes: 0,
             left: [
                 {
-                    nickname: "Random User 1",
-                    username: "randomUser1",
+                    nickname: "john lee",
+                    username: "johnree419",
                     time: 31,
-                    body: "garbage",
-                    likes: 53,
+                    body: "Who puts milk first?  You have to put the cereal first because if you don't, the cereal gets soggy and disgusting, and no one wants to eat soggy, gross cereal.  Also, you don't want the sugar to disolve in the milk because then the cereal won't be sweet anymore and it'll just be in the milk.",
+                    likes: 23,
                     references: [
                         {
                             indexes: [0, 12],
-                            title: "The sky is blue.",
-                            source: "NYT",
-                            url: "http://google.com",
-                            validity: 0.53
+                            title: "No reference",
+                            source: "N/A",
+                            url: "N/A",
+                            validity: 0.00
                         }
                     ]
                 },
                 {
-                    nickname: "Random User 1",
-                    username: "randomUser1",
-                    time: 31,
-                    body: "garbage",
-                    likes: 53,
+                    nickname: "milk first",
+                    username: "milk first",
+                    time: 16,
+                    body: "Milk first, do you put humans in the pool first or do you put the water in the pool first?  Exactly, check yourself before you wreck yourself.",
+                    likes: 11,
                     references: [
                         {
                             indexes: [0, 12],
-                            title: "The sky is blue.",
-                            source: "NYT",
-                            url: "http://google.com",
-                            validity: 0.53
+                            title: "No reference",
+                            source: "N/A",
+                            url: "N/A",
+                            validity: 0.00
                         }
                     ]
                 },
                 {
-                    nickname: "Random User 1",
-                    username: "randomUser1",
-                    time: 31,
-                    body: "garbage",
+                    nickname: "billy mays",
+                    username: "get_oxiclean",
+                    time: 59,
+                    body: "I put them in at the same time.  I saw it on a Frosted Flakes commercial and it looked pretty cool.  ",
                     likes: 53,
                     references: [
                         {
                             indexes: [0, 12],
-                            title: "The sky is blue.",
-                            source: "NYT",
-                            url: "http://google.com",
-                            validity: 0.53
+                            title: "Frosted Flakes Commercial.",
+                            source: "Kelloggs",
+                            url: "http://frostedflakes.com",
+                            validity: 0.89
                         }
                     ]
                 }

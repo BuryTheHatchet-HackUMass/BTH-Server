@@ -103,7 +103,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
     .navbar {
         z-index: 5;
     }

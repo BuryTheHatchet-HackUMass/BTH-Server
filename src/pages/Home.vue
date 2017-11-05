@@ -16,7 +16,7 @@
         <nav id="header" class="level">
             <div class="level-item has-text-centered">
                 <div>
-                    <p class="title">Today At A Glance</p>
+                    <p class="title">New Today</p>
                 </div>
             </div>
         </nav>
@@ -145,8 +145,8 @@ export default {
     data: () => {
         return {
             hero: {
-                title: "Cereal or breakfast?",
-                subtitle: "TBD"
+                title: "Today's Hot Hatchet",
+                subtitle: "Can Lebron ever pass Jordan as the GOAT with a 2-4 record in the Finals?"
             },
             stats: {
                 "Hatchets": 6, 
@@ -453,7 +453,11 @@ export default {
     }
 
     #jumbotron > .hero-body {
-        background: rgba(2, 2, 2, 0.4);
+        background: rgba(2, 2, 2, 0.6);
+    }
+
+    .title {
+        padding-bottom: 15px;
     }
 
     .card-footer {

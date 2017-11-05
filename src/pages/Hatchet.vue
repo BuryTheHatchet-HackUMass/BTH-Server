@@ -87,8 +87,11 @@ export default {
                             validity: 0.00
                         }
                     ]
-                },
-                {
+                }
+                
+            ],
+            right: [
+            {
                     nickname: "milk first",
                     username: "milk first",
                     time: 16,
@@ -120,9 +123,6 @@ export default {
                         }
                     ]
                 }
-            ],
-            right: [
-
             ]
         }
     },

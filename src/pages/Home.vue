@@ -1,149 +1,80 @@
 <template>
-    <div>
-        <Navbar/>
-        <section id="jumbotron" class="hero is-dark is-large">
-            <div class="hero-body">
-                <div class="container">
+<div>
+    <Navbar/>
+    <section id="jumbotron" class="hero is-dark is-large">
+        <div class="hero-body">
+            <div class="container">
                 <h1 class="title">
                     {{ hero.title }}
                 </h1>
                 <h2 class="subtitle">
                     {{ hero.subtitle }}
                 </h2>
-                </div>
             </div>
-        </section>
-        <nav id="header" class="level">
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="title">New Today</p>
-                </div>
-<div id="home" class="box alt">
-    <div class="row 50% uniform">
-        <div class="6u topic-panel shadow">
-            <div class="image fit">
-                <img src="https://media-cdn.tripadvisor.com/media/photo-s/0d/90/b2/35/las-vegas-strip.jpg" alt="" />
-            </div>
-            <h2>{{headline}}</h2>
-            <p><span class="large-num">3</span> days left</p>
+        </div>
+    </section>
+    <nav id="header" class="level">
+        <div class="level-item has-text-centered">
             <div>
+                <p class="title">New Today</p>
             </div>
-        </nav>
-        <nav id="stats" class="level">
-            <level-item v-for="(title, heading) in stats" :key="heading" :heading="heading" :title="title" />
-        </nav>
-        <!-- Gonna need an umbrella for this, we didn't stay DRY -->
-        <section class="category" id="new">
-            <h1 class="title">New</h1>
-            <div class="columns is-multiline">
-                <div class="column is-one-quarter"  
-                    v-for="hatchet in hatchets.new"
-                    :key="hatchet.title"
-                >
-                    <card
-                        :background-src="hatchet.bg"
-                        :title="hatchet.title" 
-                        :expiration="hatchet.expires" 
-                        :tags="hatchet.tags" 
-                        :left="hatchet.left" 
-                        :right="hatchet.right" 
-                        :starred="hatchet.starred"
-                        @leftClicked="selectHatchet(hatchet.id)"
-                        @rightClicked="selectHatchet(hatchet.id)"
-                        @clicked="selectHatchet(hatchet.id)"
-                    />
-                </div>
+        </div>
+    </nav>
+    <nav id="stats" class="level">
+        <level-item v-for="(title, heading) in stats" :key="heading" :heading="heading" :title="title" />
+    </nav>
+    <!-- Gonna need an umbrella for this, we didn't stay DRY -->
+    <section class="category" id="new">
+        <h1 class="title">New</h1>
+        <div class="columns is-multiline">
+            <div class="column is-one-quarter" v-for="hatchet in hatchets.new" :key="hatchet.title">
+                <card :background-src="hatchet.bg" :title="hatchet.title" :expiration="hatchet.expires" :tags="hatchet.tags" :left="hatchet.left"
+                    :right="hatchet.right" :starred="hatchet.starred" @leftClicked="selectHatchet(hatchet.id)" @rightClicked="selectHatchet(hatchet.id)"
+                    @clicked="selectHatchet(hatchet.id)" />
             </div>
-        </section>
-        <section class="category" id="popular">
-            <h1 class="title">Popular</h1>
-            <div class="columns is-multiline">
-                <div class="column is-one-quarter"  
-                    v-for="hatchet in hatchets.popular"
-                    :key="hatchet.title"
-                >
-                    <card
-                        :background-src="hatchet.bg"
-                        :title="hatchet.title" 
-                        :expiration="hatchet.expires" 
-                        :tags="hatchet.tags" 
-                        :left="hatchet.left" 
-                        :right="hatchet.right" 
-                        :starred="hatchet.starred"
-                        @leftClicked="selectHatchet(hatchet.id)"
-                        @rightClicked="selectHatchet(hatchet.id)"
-                        @clicked="selectHatchet(hatchet.id)"
-                    />
-                </div>
+        </div>
+    </section>
+    <section class="category" id="popular">
+        <h1 class="title">Popular</h1>
+        <div class="columns is-multiline">
+            <div class="column is-one-quarter" v-for="hatchet in hatchets.popular" :key="hatchet.title">
+                <card :background-src="hatchet.bg" :title="hatchet.title" :expiration="hatchet.expires" :tags="hatchet.tags" :left="hatchet.left"
+                    :right="hatchet.right" :starred="hatchet.starred" @leftClicked="selectHatchet(hatchet.id)" @rightClicked="selectHatchet(hatchet.id)"
+                    @clicked="selectHatchet(hatchet.id)" />
             </div>
-        </section>
-       <section class="category" id="for-you">
-            <h1 class="title">For You</h1>
-            <div class="columns is-multiline">
-                <div class="column is-one-quarter"  
-                    v-for="hatchet in hatchets.forYou"
-                    :key="hatchet.title"
-                >
-                    <card
-                        :background-src="hatchet.bg"
-                        :title="hatchet.title" 
-                        :expiration="hatchet.expires" 
-                        :tags="hatchet.tags" 
-                        :left="hatchet.left" 
-                        :right="hatchet.right" 
-                        :starred="hatchet.starred"
-                        @leftClicked="selectHatchet(hatchet.id)"
-                        @rightClicked="selectHatchet(hatchet.id)"
-                        @clicked="selectHatchet(hatchet.id)"
-                    />
-                </div>
+        </div>
+    </section>
+    <section class="category" id="for-you">
+        <h1 class="title">For You</h1>
+        <div class="columns is-multiline">
+            <div class="column is-one-quarter" v-for="hatchet in hatchets.forYou" :key="hatchet.title">
+                <card :background-src="hatchet.bg" :title="hatchet.title" :expiration="hatchet.expires" :tags="hatchet.tags" :left="hatchet.left"
+                    :right="hatchet.right" :starred="hatchet.starred" @leftClicked="selectHatchet(hatchet.id)" @rightClicked="selectHatchet(hatchet.id)"
+                    @clicked="selectHatchet(hatchet.id)" />
             </div>
-        </section>
-        <section class="category" id="recently-buried">
-            <h1 class="title">Recently Buried</h1>
-            <div class="columns is-multiline">
-                <div class="column is-one-quarter"  
-                    v-for="hatchet in hatchets.new"
-                    :key="hatchet.title"
-                >
-                    <card
-                        :background-src="hatchet.bg"
-                        :title="hatchet.title" 
-                        :expiration="hatchet.expires" 
-                        :tags="hatchet.tags" 
-                        :left="hatchet.left" 
-                        :right="hatchet.right" 
-                        :starred="hatchet.starred"
-                        @leftClicked="selectHatchet(hatchet.id)"
-                        @rightClicked="selectHatchet(hatchet.id)"
-                        @clicked="selectHatchet(hatchet.id)"
-                    />
-                </div>
+        </div>
+    </section>
+    <section class="category" id="recently-buried">
+        <h1 class="title">Recently Buried</h1>
+        <div class="columns is-multiline">
+            <div class="column is-one-quarter" v-for="hatchet in hatchets.new" :key="hatchet.title">
+                <card :background-src="hatchet.bg" :title="hatchet.title" :expiration="hatchet.expires" :tags="hatchet.tags" :left="hatchet.left"
+                    :right="hatchet.right" :starred="hatchet.starred" @leftClicked="selectHatchet(hatchet.id)" @rightClicked="selectHatchet(hatchet.id)"
+                    @clicked="selectHatchet(hatchet.id)" />
             </div>
-        </section>
-        <section class="category" id="starred">
-            <h1 class="title">Starred</h1>
-            <div class="columns is-multiline">
-                <div class="column is-one-quarter"  
-                    v-for="hatchet in hatchets.starred"
-                    :key="hatchet.title"
-                >
-                    <card
-                        :background-src="hatchet.bg"
-                        :title="hatchet.title" 
-                        :expiration="hatchet.expires" 
-                        :tags="hatchet.tags" 
-                        :left="hatchet.left" 
-                        :right="hatchet.right" 
-                        :starred="hatchet.starred"
-                        @leftClicked="selectHatchet(hatchet.id)"
-                        @rightClicked="selectHatchet(hatchet.id)"
-                        @clicked="selectHatchet(hatchet.id)"
-                    />
-                </div>
+        </div>
+    </section>
+    <section class="category" id="starred">
+        <h1 class="title">Starred</h1>
+        <div class="columns is-multiline">
+            <div class="column is-one-quarter" v-for="hatchet in hatchets.starred" :key="hatchet.title">
+                <card :background-src="hatchet.bg" :title="hatchet.title" :expiration="hatchet.expires" :tags="hatchet.tags" :left="hatchet.left"
+                    :right="hatchet.right" :starred="hatchet.starred" @leftClicked="selectHatchet(hatchet.id)" @rightClicked="selectHatchet(hatchet.id)"
+                    @clicked="selectHatchet(hatchet.id)" />
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+</div>
 </template>
 
 <script>

@@ -44,8 +44,6 @@
             </section>
             <section id="arguments">
                 <div class="columns">
-                    <p>{{ totalLeftLikes }}</p>
-                    <p>{{ totalRightLikes }}</p>
                     <div class="column is-one-half">
                         <h1 class="title has-text-centered side">{{ leftName }}</h1>
                         <WriteResponse />
@@ -78,7 +76,7 @@ export default {
                     nickname: "milk first",
                     username: "milk first",
                     time: 16,
-                    body: "Milk first, do you put humans in the pool first or do you put the water in the pool first?  Exactly, check yourself before you wreck yourself.",
+                    body: "<a href=''>@john lee</a> Milk first, do you put humans in the pool first or do you put the water in the pool first?  Exactly, check yourself before you wreck yourself.",
                     likes: 11,
                     references: [
                         {

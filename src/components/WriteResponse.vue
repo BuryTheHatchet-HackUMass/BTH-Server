@@ -20,7 +20,7 @@
             <div id="references">
                 <h2 class="subtitle">References</h2>
                 <ul>
-                    <li v-for="y in 5" :key="y">
+                    <li v-for="y in 3" :key="y">
                         <span>Example Reference</span>
                         <span class="icon is-small pull-right">
                             <i class="fa fa-times"></i>

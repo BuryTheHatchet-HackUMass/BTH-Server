@@ -1,7 +1,7 @@
 <template>
 <div class="card">
     <div class="card-content" v-on:click.capture="clicked">
-        <div class="content" :style="`background: url('${backgroundSrc}');`">
+        <div class="content" :style="`background: url('${backgroundSrc}'); background-repeat: no-repeat; background-size: cover;`">
             <div class="inner-content">
                 <h1 class="title">{{ title }}</h1>
                 <h3 class="subtitle"><b>{{ expiration }}</b> day(s) left</h3>
@@ -16,13 +16,13 @@
             {{ left.name }} 
             <span class="tag is-rounded">{{ left.responses }}</span>
         </a>
-        <a class="card-footer-item" v-on:click="star">
+        <!-- <a class="card-footer-item" v-on:click="star">
             <span class="icon is-small is-left">
                 <i v-if="mutableStarred" class="fa fa-star"></i>
                 <i v-else class="fa fa-star-o"></i>
             </span>  
             Star
-        </a>
+        </a> -->
         <a class="card-footer-item" id="right" v-on:click="rightClicked">
             {{ right.name }} 
             <span class="tag is-rounded">{{ right.responses }}</span>

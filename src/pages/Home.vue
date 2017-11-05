@@ -223,11 +223,11 @@ export default {
                         expires: 25,
                         tags: ["education", "society", "children"],
                         left: {
-                            name: "COMMON CORE IS INEFFECTIVE",
+                            name: "INEFFECTIVE",
                             responses: 19
                         },
                         right: {
-                            name: "COMMON CORE IS EFFECTIVE",
+                            name: "EFFECTIVE",
                             responses: 14
                         },
                         starred: false
@@ -287,11 +287,11 @@ export default {
                         expires: 25,
                         tags: ["education", "society", "children"],
                         left: {
-                            name: "COMMON CORE IS INEFFECTIVE",
+                            name: "INEFFECTIVE",
                             responses: 19
                         },
                         right: {
-                            name: "COMMON CORE IS EFFECTIVE",
+                            name: "EFFECTIVE",
                             responses: 14
                         },
                         starred: false
@@ -336,11 +336,11 @@ export default {
                         expires: 25,
                         tags: ["education", "society", "children"],
                         left: {
-                            name: "COMMON CORE IS INEFFECTIVE",
+                            name: "INEFFECTIVE",
                             responses: 19
                         },
                         right: {
-                            name: "COMMON CORE IS EFFECTIVE",
+                            name: "EFFECTIVE",
                             responses: 14
                         },
                         starred: false
@@ -456,13 +456,14 @@ export default {
         background: rgba(2, 2, 2, 0.4);
     }
 
+    .card-footer {
+        position: relative;
+        bottom: 0;
+    }
+
     .category {
         padding-left: 60px;
         padding: 40px;
-    }
-
-    .category > card {
-        margin: 20px;
     }
 
     .level#header {

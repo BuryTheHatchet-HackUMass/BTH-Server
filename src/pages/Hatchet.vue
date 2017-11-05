@@ -47,12 +47,12 @@
                     <p>{{ totalLeftLikes }}</p>
                     <p>{{ totalRightLikes }}</p>
                     <div class="column is-one-half">
-                        <h1 class="title has-text-centered side">Left</h1>
+                        <h1 class="title has-text-centered side">{{ leftName }}</h1>
                         <WriteResponse />
                         <Response v-for="(response, index) in left" :response="response" :key="index" @liked="totalLeftLikes += 1" @unliked="totalLeftLikes -= 1" />
                     </div>
                     <div class="column is-one-half">
-                        <h1 class="title has-text-centered side">Right</h1>
+                        <h1 class="title has-text-centered side">{{ rightName }}</h1>
                         <WriteResponse />
                         <Response v-for="(response, index) in right" :response="response" :key="index" @liked="totalRightLikes++" @unliked="totalRightLikes--" />                    
                     </div>
@@ -71,6 +71,8 @@ export default {
         return {
             totalLeftLikes: 0,
             totalRightLikes: 0,
+            leftName: "Milk",
+            rightName: "Cereal",
             left: [
                 {
                     nickname: "john lee",

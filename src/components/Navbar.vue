@@ -2,7 +2,7 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <router-link to="/" class="navbar-item">
-                <img src="https://www.iconexperience.com/_img/g_collection_png/standard/512x512/axe.png">
+                <img id="logo" src="../img/BTH_logo.jpeg">
                 Bury The Hatchet
             </router-link>
             <button class="button navbar-burger" data-target="menu">
@@ -68,5 +68,10 @@ document.addEventListener('DOMContentLoaded', function () {
   width: 64px !important;
   max-height: 64px !important;
   margin-right: 20px;
+}
+
+#logo {
+    padding: 10px;
+    border-radius: 20px;
 }
 </style>

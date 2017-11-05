@@ -114,6 +114,10 @@ export default {
         background-size: cover;
     }
 
+    #jumbotron > .hero-body {
+        background: rgba(2, 2, 2, 0.4);
+    }
+
     .category {
         padding-left: 60px;
         padding: 40px;

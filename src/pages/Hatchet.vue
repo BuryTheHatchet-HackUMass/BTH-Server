@@ -3,12 +3,10 @@
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-menu">
                 <div class="navbar-item">
-                    <a class="button is-danger">
-                        <a v-on:click="$router.go(-1)" class="button is-danger">
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-times"></i>
-                            </span>
-                        </a>
+                    <a v-on:click="$router.go(-1)" class="button is-danger">
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-times"></i>
+                        </span>
                     </a>
                 </div>
                 <div class="navbar-end">

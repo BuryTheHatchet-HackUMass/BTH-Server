@@ -9,14 +9,15 @@ import App from "../App.vue";
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: Hatchet },
-  // { path: '/hatchet/:id', component: Hatchet }
+  { path: '/', component: Home },
+  { path: '/hatchet/:id', component: Hatchet }
 ]
 
 // scrollBehavior: https://stackoverflow.com/questions/40341939/how-to-create-anchor-tags-with-vue-router
 const router = new VueRouter({
   mode: "history",
   scrollBehavior: function(to, from, savedPosition) {
+    console.log(to);    
     if (to.hash) {
         return {
           selector: to.hash, 
@@ -25,7 +26,7 @@ const router = new VueRouter({
           }
         };
     } else {
-        return null;
+        return {x: 0, y: 0};
     }
   },
   routes // short for `routes: routes`

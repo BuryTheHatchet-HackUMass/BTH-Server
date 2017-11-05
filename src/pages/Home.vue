@@ -12,6 +12,13 @@
                 </div>
             </div>
         </section>
+        <nav id="header" class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="title">Today At A Glance</p>
+                </div>
+            </div>
+        </nav>
         <nav id="stats" class="level">
             <level-item heading="Hatchets Today" title="6" />
             <level-item heading="Responses" title="123" />
@@ -20,6 +27,16 @@
         </nav>
         <section class="category" id="new">
             <h1 class="title">New</h1>
+            <div class="columns">
+                <card 
+                    background-src="https://www.rd.com/wp-content/uploads/sites/2/2016/03/national-cereal-day-opener.jpg"
+                    title="Cereal or Milk first?" 
+                    expiration="8" 
+                    :tags="['politics', 'cereal']" 
+                    :left="{'name': 'Milk', 'responses': 12}" 
+                    :right="{'name': 'Cereal', 'responses': 56}" 
+                    :starred="false" />
+            </div>
         </section>
         <section class="category" id="popular">
             <h1 class="title">Popular</h1>
@@ -34,7 +51,9 @@
 </template>
 
 <script>
-module.exports = {
+import Card from '../components/Card.vue';
+
+export default {
     components: {
         "level-item": {
             props: ["heading", "title"],
@@ -46,7 +65,8 @@ module.exports = {
                     </div>
                 </div> 
             `
-        }
+        },
+        Card
     }
 };
 </script>
@@ -68,7 +88,14 @@ module.exports = {
         padding-bottom: 200px;
     }
 
-    #stats {
+    .level#header {
         padding: 20px;
+        margin-bottom: 0;
+        background: white;
+    }
+
+    .level#stats {
+        padding: 20px;
+        background: white;
     }
 </style>

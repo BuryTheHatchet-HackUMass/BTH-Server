@@ -1,10 +1,10 @@
 <template>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
+            <router-link to="/" class="navbar-item">
                 <img src="https://www.iconexperience.com/_img/g_collection_png/standard/512x512/axe.png">
                 Bury The Hatchet
-            </a>
+            </router-link>
             <button class="button navbar-burger" data-target="menu">
                 <span></span>
                 <span></span>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="navbar-item">
                     <a class="button is-danger">
-                        <span class="icon is-small-isleft">
+                        <span class="icon is-small is-left">
                             <i class="fa fa-pencil-square-o"></i>
                         </span>
                         <p>Bury Your Hatchet</p>
@@ -39,14 +39,7 @@
                 </div>
             </div>
         </div>
-</div>
-
     </nav>
-  <!-- <div class="navbar">
-        <router-link class="link" to="/">home</router-link>
-        <router-link class="link" to="/something">about</router-link>
-        <router-link class="link" to="/something">about 2</router-link>
-    </div> -->
 </template>
 
 <script>

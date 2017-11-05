@@ -3,12 +3,14 @@ import "../styles/_reset.scss";
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../pages/Home.vue";
+import Hatchet from "../pages/Hatchet.vue";
 import App from "../App.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: Home }
+  { path: '/', component: Home },
+  { path: '/hatchet/:id', component: Hatchet }
 ]
 
 // scrollBehavior: https://stackoverflow.com/questions/40341939/how-to-create-anchor-tags-with-vue-router

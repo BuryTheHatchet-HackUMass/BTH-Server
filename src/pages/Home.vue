@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Navbar/>
         <section id="jumbotron" class="hero is-dark is-large">
             <div class="hero-body">
                 <div class="container">
@@ -20,26 +21,48 @@
             </div>
         </nav>
         <nav id="stats" class="level">
-            <level-item heading="Hatchets Today" title="6" />
+            <level-item heading="Hatchets" title="6" />
             <level-item heading="Responses" title="123" />
             <level-item heading="Facts Added" title="12" />
             <level-item heading="New Users" title="789" />
         </nav>
         <section class="category" id="new">
             <h1 class="title">New</h1>
-            <div class="columns">
-                <card 
-                    background-src="https://www.rd.com/wp-content/uploads/sites/2/2016/03/national-cereal-day-opener.jpg"
-                    title="Cereal or Milk first?" 
-                    expiration="8" 
-                    :tags="['politics', 'cereal']" 
-                    :left="{'name': 'Milk', 'responses': 12}" 
-                    :right="{'name': 'Cereal', 'responses': 56}" 
-                    :starred="false" />
+            <div class="columns is-multiline">
+                <div class="column is-one-quarter"  
+                    v-for="x in 10"
+                    :key="x">
+                    <card
+                        background-src="https://www.rd.com/wp-content/uploads/sites/2/2016/03/national-cereal-day-opener.jpg"
+                        title="Cereal or Milk first?" 
+                        expiration="8" 
+                        :tags="['politics', 'cereal']" 
+                        :left="{'name': 'Milk', 'responses': 12}" 
+                        :right="{'name': 'Cereal', 'responses': 56}" 
+                        :starred="false"
+                        @leftClicked="selectHatchet(x)"
+                        @rightClicked="selectHatchet(x)"
+                        @clicked="selectHatchet(x)"
+                        ></card>
+                </div>
             </div>
         </section>
         <section class="category" id="popular">
             <h1 class="title">Popular</h1>
+            <div class="columns is-multiline">
+                <div class="column is-one-quarter"  
+                    v-for="x in 3"
+                    :key="x">
+                    <card
+                        background-src="https://www.rd.com/wp-content/uploads/sites/2/2016/03/national-cereal-day-opener.jpg"
+                        title="Cereal or Milk first?" 
+                        expiration="8" 
+                        :tags="['politics', 'cereal']" 
+                        :left="{'name': 'Milk', 'responses': 12}" 
+                        :right="{'name': 'Cereal', 'responses': 56}" 
+                        :starred="false" />
+                </div>
+            </div>
         </section>
         <section class="category" id="for-you">
             <h1 class="title">For You</h1>
@@ -52,8 +75,17 @@
 
 <script>
 import Card from '../components/Card.vue';
+import Navbar from '../components/Navbar.vue';
 
 export default {
+    methods: {
+        log: function(text) {
+            console.log(text);
+        },
+        selectHatchet: function(id) {
+            this.$router.push(`/hatchet/${id}`);
+        }
+    },
     components: {
         "level-item": {
             props: ["heading", "title"],
@@ -63,10 +95,10 @@ export default {
                         <p class="heading">{{ heading }}</p>
                         <p class="title">{{ title }}</p>
                     </div>
-                </div> 
-            `
+                </div>`
         },
-        Card
+        Card,
+        Navbar
     }
 };
 </script>
@@ -85,7 +117,10 @@ export default {
     .category {
         padding-left: 60px;
         padding: 40px;
-        padding-bottom: 200px;
+    }
+
+    .category > card {
+        margin: 20px;
     }
 
     .level#header {

@@ -1,6 +1,6 @@
 <template>
 <div class="card">
-    <div class="card-content">
+    <div class="card-content" v-on:click.capture="clicked">
         <div class="content" :style="`background: url('${backgroundSrc}');`">
             <div class="inner-content">
                 <h1 class="title">{{ title }}</h1>
@@ -12,7 +12,7 @@
         </div>
     </div>
     <footer class="card-footer">
-        <a href="#" class="card-footer-item">
+        <a class="card-footer-item" id="left" v-on:click="$router.push('/hatchet/16')">
             {{ left.name }} 
             <span class="tag is-rounded">{{ left.responses }}</span>
         </a>
@@ -23,7 +23,7 @@
             </span>  
             Star
         </a>
-        <a href="#" class="card-footer-item">
+        <a class="card-footer-item" id="right" v-on:click="rightClicked">
             {{ right.name }} 
             <span class="tag is-rounded">{{ right.responses }}</span>
         </a>    
@@ -42,6 +42,15 @@ export default {
     methods: {
         star: function() {
             this.mutableStarred = !this.mutableStarred;
+        },
+        clicked: function() {
+            this.$emit("clicked");
+        },
+        leftClicked: function() {
+            this.$emit("leftClicked");
+        },
+        rightClicked: function() {
+            this.$emit("rightClicked");
         }
     }
 }
@@ -49,6 +58,12 @@ export default {
 
 
 <style scoped lang="scss">
+    @import "~bulma/bulma";
+
+    .card {
+        cursor: pointer;
+    }
+
     .card-content {
         padding: 0;
     }
@@ -68,6 +83,18 @@ export default {
 
     .title {
         padding-bottom: 10px;
+    }
+
+    .card-footer-item#left {
+        background-color: $primary;
+    } 
+    
+    .card-footer-item#right {
+        background: $danger;
+    }
+
+    .card-footer-item#left, .card-footer-item#right {
+        color: white !important;
     }
 
     .card-footer-item > .tag {

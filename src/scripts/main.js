@@ -9,7 +9,7 @@ import App from "../App.vue";
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: Home },
+  { path: '/', component: Hatchet },
   { path: '/hatchet/:id', component: Hatchet }
 ]
 

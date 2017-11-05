@@ -9,17 +9,18 @@
         <div class="media-content">
             <div class="content">
                 <p>
-                <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+                <strong>{{ response.nickname }}</strong> <small>@{{ response.username }}</small> <small>{{ response.time }}m ago</small>
                 <br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                <p v-html="response.body" />
                 </p>
             </div>
             <div class="pull-right">
-                <a class="button is-primary">
+                <a class="button is-primary" v-on:click="liked">
                     <span class="icon is-small is-left">
-                        <i class="fa fa-heart-o"></i>
+                        <i v-if="isLiked" class="fa fa-heart"></i>
+                        <i v-else class="fa fa-heart-o"></i>
                     </span>
-                    <span>Like</span>
+                    <span>Like ({{ response.likes }})</span>
                 </a>
                 <a class="button is-info">
                     <span class="icon is-small is-left">
@@ -38,3 +39,22 @@
     </article>
 </div>
 </template>
+
+<script>
+export default {
+    props: ["response", "isLiked"],
+    methods: {
+        liked: function() {
+            this.isLiked = !this.isLiked;
+            if (this.isLiked) {
+                this.response.likes++;
+                this.$emit("liked");
+            }
+            else {
+                this.response.likes--;
+                this.$emit("unliked");
+            }
+        }
+    }
+} 
+</script>

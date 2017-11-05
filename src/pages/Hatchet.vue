@@ -49,12 +49,12 @@
                     <div class="column is-one-half">
                         <h1 class="title has-text-centered side">Left</h1>
                         <WriteResponse />
-                        <Response v-for="(response, index) in left" :response="response" :key="index" @liked="totalLeftLikes++" @unliked="totalLeftLikes--" />
+                        <Response v-for="(response, index) in left" :response="response" :key="index" @liked="totalLeftLikes += 1" @unliked="totalLeftLikes -= 1" />
                     </div>
                     <div class="column is-one-half">
                         <h1 class="title has-text-centered side">Right</h1>
                         <WriteResponse />
-                        <Response v-for="(response, index) in left" :response="response" :key="index" @liked="totalRightLikes++" @unliked="totalRightLikes--" />                    
+                        <Response v-for="(response, index) in right" :response="response" :key="index" @liked="totalRightLikes++" @unliked="totalRightLikes--" />                    
                     </div>
                 </div>
             </section>

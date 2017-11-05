@@ -42,17 +42,23 @@
 
 <script>
 export default {
-    props: ["response", "isLiked"],
+    props: ["response"],
+    data: () => {
+        return {
+            isLiked: false
+        }
+    },
     methods: {
         liked: function() {
-            this.isLiked = !this.isLiked;
             if (this.isLiked) {
-                this.response.likes++;
-                this.$emit("liked");
-            }
-            else {
+                this.isLiked = false;
                 this.response.likes--;
                 this.$emit("unliked");
+            }
+            else {
+                this.isLiked = true;
+                this.response.likes++;
+                this.$emit("liked");
             }
         }
     }

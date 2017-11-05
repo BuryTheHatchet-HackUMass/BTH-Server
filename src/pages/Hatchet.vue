@@ -74,26 +74,7 @@ export default {
             leftName: "Milk",
             rightName: "Cereal",
             left: [
-                {
-                    nickname: "john lee",
-                    username: "johnree419",
-                    time: 31,
-                    body: "Who puts milk first?  You have to put the cereal first because if you don't, the cereal gets soggy and disgusting, and no one wants to eat soggy, gross cereal.  Also, you don't want the sugar to disolve in the milk because then the cereal won't be sweet anymore and it'll just be in the milk.",
-                    likes: 23,
-                    references: [
-                        {
-                            indexes: [0, 12],
-                            title: "No reference",
-                            source: "N/A",
-                            url: "N/A",
-                            validity: 0.00
-                        }
-                    ]
-                }
-                
-            ],
-            right: [
-            {
+                 {
                     nickname: "milk first",
                     username: "milk first",
                     time: 16,
@@ -125,6 +106,25 @@ export default {
                         }
                     ]
                 }
+            ],
+            right: [
+                {
+                    nickname: "john lee",
+                    username: "johnree419",
+                    time: 31,
+                    body: "Who puts milk first?  You have to put the cereal first because if you don't, the cereal gets soggy and disgusting, and no one wants to eat soggy, gross cereal.  Also, you don't want the sugar to disolve in the milk because then the cereal won't be sweet anymore and it'll just be in the milk.",
+                    likes: 23,
+                    references: [
+                        {
+                            indexes: [0, 12],
+                            title: "No reference",
+                            source: "N/A",
+                            url: "N/A",
+                            validity: 0.00
+                        }
+                    ]
+                }
+           
             ]
         }
     },

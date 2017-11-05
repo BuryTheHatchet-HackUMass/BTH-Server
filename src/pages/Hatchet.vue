@@ -4,11 +4,30 @@
             <div class="navbar-menu">
                 <div class="navbar-item">
                     <a class="button is-danger">
-                        <span class="icon is-small is-left">
-                            <i class="fa fa-times"></i>
-                        </span>
-                        <a v-on:click="$router.go(-1)" class="button is-danger">Close</a>
+                        <a v-on:click="$router.go(-1)" class="button is-danger">
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-times"></i>
+                            </span>
+                        </a>
                     </a>
+                </div>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <a class="button is-danger">
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-exclamation-circle"></i>
+                            </span>
+                            <p>Report</p>
+                        </a>
+                    </div>
+                    <div class="navbar-item">
+                        <a class="button is-primary">
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-share"></i>
+                            </span>
+                            <p>Share</p>
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -29,27 +48,16 @@
                 <div class="columns">
                     <div class="column is-one-half">
                         <h1 class="title has-text-centered side">Left</h1>
-                        <div class="box">
-                            <article class="media">
-                                <div class="media-left">
-                                <figure class="image is-64x64">
-                                    <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-                                </figure>
-                                </div>
-                                <div class="media-content">
-                                    <div class="content">
-                                        <p>
-                                        <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-                                        <br>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                                        </p>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
+                        <WriteResponse />
+                        <Response />
+                        <Response />
+                        <Response />
+                        <Response />
+                        <Response />
                     </div>
                     <div class="column is-one-half">
                         <h1 class="title has-text-centered side">Right</h1>
+                        <WriteResponse />
                     </div>
                 </div>
             </section>
@@ -58,28 +66,27 @@
 </template>
 
 <script>
+import Response from "../components/Response.vue";
+import WriteResponse from "../components/WriteResponse.vue";
+
+export default {
+    components: {
+        Response, WriteResponse
+    }
+}
 </script>
 
 <style scoped lang="scss">
+    .navbar {
+        z-index: 20;
+    }
+
     .hero-body {
         background: rgba(2, 2, 2, 0.7);
     }
 
     .title {
         padding-bottom: 10px;
-    }
-
-    .side:first-child::before {
-        content: '';
-        background: red;
-        position: absolute;
-        display: block;
-        height: 1em;
-        width: 100%;
-        top: 2px;
-        left: 0;
-        transition: background-color .3s ease;
-        z-index: -1;
     }
 
     #jumbotron {
